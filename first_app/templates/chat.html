@@ -1,0 +1,132 @@
+{% load staticfiles %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+{% load staticfiles %}
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Group Chat</title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="{% static 'first_app/css/materialize.min.css' %}">
+    <link rel="stylesheet" href="{% static 'first_app/css/materialize.css' %}">
+    <link rel="stylesheet" href="{% static 'first_app/css/ghpages-materialize.css' %}">
+    <link rel="stylesheet" href="{% static 'first_app/css/prism.css' %}">
+    <script type='text/javascript' src='{% static 'first_app/js/materialize.min.js' %}'></script>
+    <script type='text/javascript' src="{% static "first_app/js/materialize.js" %}"></script>
+    <script type='text/javascript' src="{% static "first_app/js/init.js" %}"></script>
+
+    <script type='text/javascript' src="{% static "first_app/js/jquery-2.1.4.min.js" %}"></script>
+
+    <script type='text/javascript' src="{% static "first_app/js/jquery.timeago.min.js" %}"></script>
+
+    <script type='text/javascript' src="{% static "first_app/js/live.js" %}"></script>
+
+    <script type='text/javascript' src="{% static "first_app/js/lunr.min.js" %}"></script>
+    <script type='text/javascript' src="{% static "first_app/js/prism.js" %}"></script>
+    <script type='text/javascript' src="{% static "first_app/js/search.js" %}"></script>
+
+
+</head>
+<body>
+
+
+<nav>
+    <div class="nav-wrapper">
+        <img src="http://www.consultadd.com/wp-content/uploads/Final_logo.png">
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a style="color: black" href="/home/">Home</a></li>
+            <li><a style="color: black" href="/articles/">Articles</a></li>
+            <li><a style="color: black" href="/logout/">Logout</a></li>
+        </ul>
+    </div>
+</nav>
+
+{#<div class="card-panel blue lighten-2">#}
+{#    <h1>{% block head %}{% endblock %}</h1>#}
+{#    {% block content %}#}
+{#        <p>Welcome to Chat Page {{ user.first_name }} !!!</p>#}
+{#    {% endblock %}#}
+{#</div>#}
+<div class="row">
+    <div class="col s12 m12">
+        <div class="card black darken-1">
+            <div class="card-content white-text">
+
+                <div class="row">
+                    <div class="col s12 m12">
+                        <div class="card blue-grey darken-1">
+                            <div class="card-content white-text">
+                                <form method="POST" name="commentform" action="/chats/" >{% csrf_token %}
+                                    <div>
+<textarea class="materialize-textarea" name="comments" id="comments" style="font-family:sans-serif;font-size:1.2em;"
+          value="comments">
+</textarea>
+                                    </div>
+                                    <textarea name="hide" style="display: none" value="{{ user_loggedin }}"></textarea>
+                                    <input type="submit" name="submit" class="btn btn-primary" value="Send">
+
+
+                                </form>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                {#----------------------------------------------------------------------------------------------------------------------------------------------#}
+
+                <div class="row">
+                    <div class="col s12 m9">
+                    <div class="card grey darken-1">
+                            <div  style='overflow:auto;height:400px;' class="card-content white-text">
+{#                        <table class="bordered">#}
+{#                            <thead>#}
+{#                            <tr>#}
+{#                                <th data-field="id">Chat</th>#}
+{#                            </tr>#}
+{#                            </thead>#}
+
+{#---------------------------------------------------------------------------------------------------------------------------------------#}
+                                                  {% for i in my_data %}
+
+                        <ul class="collection">
+              <li class="collection-item avatar">
+                <span class="title"><h6 style="color: #0059bc"><b>{{ i.logged_inuser }}</b></h6></span>
+
+
+                                        <h3 style="color: black">{{ i.comment }}</h3>
+
+                <a href="#!" class="secondary-content"><i class="material-icons">{{ i.dates }}</i></a>
+              </li>
+
+            </ul>
+                                                    {% endfor %}
+
+                    </div>
+                    </div>
+                    </div>
+
+                    <div class="col s12 m3">
+                    <div class="card blue-grey lighten-1">
+                            <div class="card-content white-text">
+                        {% for i in my_users %}
+                            {% if i == user_loggedin %}
+                                {{ i }}<span class="new badge" style="color: snow">Online</span><br>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+                    </div>
+
+
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,150 @@
+{% load staticfiles %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+{% load staticfiles %}
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome {{ user.first_name }}</title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="{% static 'first_app/css/materialize.min.css' %}">
+    <link rel="stylesheet" href="{% static 'first_app/css/materialize.css' %}">
+    <script type='text/javascript' src='{% static 'first_app/js/materialize.min.js' %}'></script>
+    <script type='text/javascript' src="{% static "first_app/js/materialize.js" %}"></script>
+    <script type='text/javascript' src="{% static "first_app/js/init.js" %}"></script>
+
+    <script type='text/javascript' src="{% static "first_app/js/jquery-2.1.4.min.js" %}"></script>
+
+    <script type='text/javascript' src="{% static "first_app/js/jquery.timeago.min.js" %}"></script>
+
+    <script type='text/javascript' src="{% static "first_app/js/live.js" %}"></script>
+
+    <script type='text/javascript' src="{% static "first_app/js/lunr.min.js" %}"></script>
+    <script type='text/javascript' src="{% static "first_app/js/prism.js" %}"></script>
+    <script type='text/javascript' src="{% static "first_app/js/search.js" %}"></script>
+
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+</head>
+<body>
+
+<nav>
+    <div class="nav-wrapper">
+        <img src="http://www.consultadd.com/wp-content/uploads/Final_logo.png">
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li ><a style="color: black" href="/docx/">View Documents</a></li>
+            <li ><a style="color: black" href="/chats/">Chat Box</a></li>
+            <li ><a style="color: black" href="/articles/">Articles</a></li>
+            <li ><a style="color: black" href="/logout/">Logout</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="card-panel teal lighten-2">
+    <h1>{% block head %}{% endblock %}</h1>
+    {% block content %}
+        <p>Welcome {{ user.first_name }} !!!</p>
+    {% endblock %}
+</div>
+<div class="parallax-container">
+    <div class="row">
+        <div class="col s12 m3">
+          <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+              <span class="card-title">Card Title</span>
+              <p>I am a very simple card. I am good at containing small bits of information.
+              I am convenient because I require little markup to use effectively.</p>
+            </div>
+            <div class="card-action">
+              <a href="#">This is a link</a>
+              <a href="#">This is a link</a>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 m3">
+          <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+              <span class="card-title">Card Title</span>
+              <p>I am a very simple card. I am good at containing small bits of information.
+              I am convenient because I require little markup to use effectively.</p>
+            </div>
+            <div class="card-action">
+              <a href="#">This is a link</a>
+              <a href="#">This is a link</a>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 m3">
+          <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+              <span class="card-title">Card Title</span>
+              <p>I am a very simple card. I am good at containing small bits of information.
+              I am convenient because I require little markup to use effectively.</p>
+            </div>
+            <div class="card-action">
+              <a href="#">This is a link</a>
+              <a href="#">This is a link</a>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 m3">
+          <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+              <span class="card-title">Card Title</span>
+              <p>I am a very simple card. I am good at containing small bits of information.
+              I am convenient because I require little markup to use effectively.</p>
+            </div>
+            <div class="card-action">
+              <a href="#">This is a link</a>
+              <a href="#">This is a link</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    <div class="row">
+        <div class="col s12 m12">
+          <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+              <span class="card-title">Card Title</span>
+              <p>I am a very simple card. I am good at containing small bits of information.
+              I am convenient because I require little markup to use effectively.</p>
+            </div>
+            <div class="card-action">
+              <a href="#">This is a link</a>
+              <a href="#">This is a link</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    <div class="parallax"><img src={% static 'first_app/images/2.jpg' %}></div>
+</div>
+<div class="section grey">
+    <div class="row container">
+        <h2 class="header">Parallax</h2>
+
+        <p class="grey-text text-darken-3 lighten-3">Parallax is an effect where the background content or image in this
+            case, is moved at a different speed than the foreground content while scrolling.</p>
+    </div>
+</div>
+<div class="parallax-container">
+<p style="color: white">Now that we have told where Django can find our various files as well as the URLs they can be located under, we need to actually serve the files for incoming requests. Generally there are two possible scenarios; a production or development environment.
+
+When a user requests a static or media file in a production environment, we want our web server (nginx/apache etc.) to deal with the request and return the file instead of passing the request down to the application server (uwsgi/gunicorn etc.). To do this we need to configure our webserver to listen for requests that match our STATIC_URL and MEDIA_URL and return the files immediately from the STATIC_ROOT and MEDIA_ROOT folders. How we go about configuring this is outside the scope of this post, but there is an example for Nginx on Stackoverflow as well as Apache.
+
+On the other hand, when working in a development environment, we don't want to go through the complications of having to set up and configure a fully fledged web server. Thankfully Django provide a very basic web server application that we can use to server our application during development. We can also server our static and media files through this development server too.</p>
+    <div class="parallax"><img src={% static 'first_app/images/1.jpg' %}></div>
+</div>
+<img src="file:///home/cpu002/PycharmProjects/first_proj/first_app/templates/1.jpg" alt="">
+
+<script>
+    $(document).ready(function () {
+        $('.parallax').parallax();
+    });
+</script>
+
+
+</body>
+</html>
