@@ -57,7 +57,7 @@
                     <div class="col s12 m12">
                         <div class="card blue-grey darken-1">
                             <div class="card-content white-text">
-                                <form method="POST" name="commentform" action="/chats/" >{% csrf_token %}
+                                <form method="POST" name="commentform" action="/chats/">{% csrf_token %}
                                     <div>
 <textarea class="materialize-textarea" name="comments" id="comments" style="font-family:sans-serif;font-size:1.2em;"
           value="comments">
@@ -80,49 +80,51 @@
 
                 <div class="row">
                     <div class="col s12 m9">
-                    <div class="card grey darken-1">
-                            <div  style='overflow:auto;height:400px;' class="card-content white-text">
-{#                        <table class="bordered">#}
-{#                            <thead>#}
-{#                            <tr>#}
-{#                                <th data-field="id">Chat</th>#}
-{#                            </tr>#}
-{#                            </thead>#}
+                        <div class="card grey darken-1">
+                            <div style='overflow:auto;height:400px;' class="card-content white-text">
+                                {#                        <table class="bordered">#}
+                                {#                            <thead>#}
+                                {#                            <tr>#}
+                                {#                                <th data-field="id">Chat</th>#}
+                                {#                            </tr>#}
+                                {#                            </thead>#}
 
-{#---------------------------------------------------------------------------------------------------------------------------------------#}
-                                                  {% for i in my_data %}
+                                {#---------------------------------------------------------------------------------------------------------------------------------------#}
+                                {% for i in my_data %}
 
-                        <ul class="collection">
-              <li class="collection-item avatar">
-                <span class="title"><h6 style="color: #0059bc"><b>{{ i.logged_inuser }}</b></h6></span>
+                                    <ul class="collection">
+                                        <li class="collection-item avatar">
+                                            <span class="title"><h6 style="color: #0059bc"><b>{{ i.logged_inuser }}</b>
+                                            </h6></span>
 
 
-                                        <h3 style="color: black">{{ i.comment }}</h3>
+                                            <h3 style="color: black">{{ i.comment }}</h3>
 
-                <a href="#!" class="secondary-content"><i class="material-icons">{{ i.dates }}</i></a>
-              </li>
+                                            <a href="#!" class="secondary-content"><i
+                                                    class="material-icons">{{ i.dates }}</i></a>
+                                        </li>
 
-            </ul>
-                                                    {% endfor %}
+                                    </ul>
+                                {% endfor %}
 
-                    </div>
-                    </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="col s12 m3">
-                    <div class="card blue-grey lighten-1">
+                        <div class="card blue-grey lighten-1">
                             <div class="card-content white-text">
-                        {% for i in my_users %}
-                            {% if i == user_loggedin %}
-                                {{ i }}<span class="new badge" style="color: snow">Online</span><br>
-                            {% endif %}
-                        {% endfor %}
+                                {% for i in my_users %}
+                                    {% if i == user_loggedin %}
+                                        {{ i }}<span class="new badge" style="color: snow">Online</span><br>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
                     </div>
+
+
                 </div>
-                    </div>
-
-
-            </div>
             </div>
         </div>
     </div>

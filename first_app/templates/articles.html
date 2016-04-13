@@ -26,7 +26,6 @@
     <script type='text/javascript' src="{% static "first_app/js/prism.js" %}"></script>
     <script type='text/javascript' src="{% static "first_app/js/search.js" %}"></script>
 
-
 </head>
 <body>
 
@@ -114,7 +113,7 @@
 
                                             <h5 style="color: darkgreen">{{ i.desc }}</h5><br>
 
-                                            <img src="/media/{{ i.docfile }}">
+                                            <img class="materialboxed" src="/media/{{ i.docfile }}">
 
                                             <a href="#!" class="secondary-content"><i
                                                     class="material-icons">{{ i.dates }}</i></a>
@@ -131,5 +130,7 @@
             </div>
         </div>
     </div>
+</div>
+
 </body>
 </html>

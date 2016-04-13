@@ -11,6 +11,7 @@ urlpatterns = [
     url(r'^docx/$', ('first_app.views.docs')),
     url(r'^articles/$', ('first_app.views.articles')),
     url(r'^home/$', ('first_app.views.home')),
+    url(r'^notes/$', ('first_app.views.newnotes')),
 ]
 
 # from django.conf.urls import url, include

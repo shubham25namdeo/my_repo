@@ -11,8 +11,8 @@ import hashlib, datetime, random
 from django.utils import timezone
 from reportlab.pdfgen import canvas
 from django.utils.html import strip_tags
-from docx import *
-from docx.shared import Inches
+# from docx import *
+# from docx.shared import Inches
 
 
 
@@ -91,6 +91,39 @@ def home(request):
         {'user': request.user}
     )
 
+def newnotes(request):
+    args = {}
+    args.update(csrf(request))
+
+    if request.method == 'POST':
+        form = Note.objects.create()
+        form.title = request.POST.get('title')
+        form.notes = request.POST.get('notes')
+        form.logged_user = str(request.user)
+        form.dates = datetime.datetime.utcnow().replace(tzinfo=utc)
+        form.save()
+        user_loggedin = str(request.user)
+        my_data = Note.objects.all().filter(logged_user=user_loggedin)
+        # print_dates=''
+        # print_notes=''
+        # print_title=''
+        # for j in my_data:
+        #     print (j)
+        #     if j.logged_user == user_loggedin:
+        #         print(j.notes,"sadfsfsdfsfsfd")
+        #         print_notes = j.notes
+        #         print_title = j.title
+        #         print_dates = j.dates
+        return render_to_response('notes.html', {'user_loggedin': user_loggedin, 'my_data':my_data},
+                                              context_instance=RequestContext(request))
+
+    else:
+        user_loggedin = str(request.user)
+        my_data = Note.objects.all().filter(logged_user=user_loggedin)
+        return render_to_response('notes.html', {'user_loggedin': user_loggedin, 'my_data':my_data},
+                                              context_instance=RequestContext(request))
+
+
 
 def chats(request):
     args = {}
@@ -111,7 +144,7 @@ def chats(request):
         user_loggedin = (request.user)
 
 
-        return render_to_response('chat.html', {'user_loggedin':user_loggedin, 'com': list[-1], 'my_data': my_data, 'my_users': my_users},
+        return render_to_response('chat.html', {'user_loggedin':user_loggedin, 'com': list[-1], 'my_data': my_data, 'my_users': my_users },
                                   context_instance=RequestContext(request))
 
     else:
@@ -169,45 +202,45 @@ def docs(request):
         list.texts = request.POST.get('editor1')
         list.dates = datetime.datetime.utcnow().replace(tzinfo=utc)
         list.save()
-        # response = HttpResponse(content_type='application/pdf')
-        # response['Content-Disposition'] = 'attachment; filename="new_pdf.pdf"'
-        # p = canvas.Canvas(response)
-        # filtered = strip_tags(list.texts)[:-2]
-        # p.drawString(100, 750, filtered)
-        # print (list.texts)
-        # p.showPage()
-        # p.save()
-        # return response
-        document = Document()
-    docx_title="TEST_DOCUMENT.docx"
-    # ---- Cover Letter ----
-    document.add_picture((r'%s/static/images/my-header.png' % (settings.PROJECT_PATH)), width=Inches(4))
-    document.add_paragraph()
-    document.add_paragraph("%s" % date.today().strftime('%B %d, %Y'))
-
-    document.add_paragraph('Dear Sir or Madam:')
-    document.add_paragraph('We are pleased to help you with your widgets.')
-    document.add_paragraph('Please feel free to contact me for any additional information.')
-    document.add_paragraph('I look forward to assisting you in this project.')
-
-    document.add_paragraph()
-    document.add_paragraph('Best regards,')
-    document.add_paragraph('Acme Specialist 1]')
-    document.add_page_break()
-
-    # Prepare document for download
-    # -----------------------------
-    f = StringIO()
-    document.save(f)
-    length = f.tell()
-    f.seek(0)
-    response = HttpResponse(
-        f.getvalue(),
-        content_type='application/vnd.openxmlformats-officedocument.wordprocessingml.document'
-    )
-    response['Content-Disposition'] = 'attachment; filename=' + docx_title
-    response['Content-Length'] = length
-    return response
+        response = HttpResponse(content_type='application/pdf')
+        response['Content-Disposition'] = 'attachment; filename="new_pdf.pdf"'
+        p = canvas.Canvas(response)
+        filtered = strip_tags(list.texts)[:-2]
+        p.drawString(100, 750, filtered)
+        print (list.texts)
+        p.showPage()
+        p.save()
+        return response
+    #     document = Document()
+    # docx_title="TEST_DOCUMENT.docx"
+    # # ---- Cover Letter ----
+    # document.add_picture((r'%s/static/images/my-header.png' % (settings.PROJECT_PATH)), width=Inches(4))
+    # document.add_paragraph()
+    # document.add_paragraph("%s" % date.today().strftime('%B %d, %Y'))
+    #
+    # document.add_paragraph('Dear Sir or Madam:')
+    # document.add_paragraph('We are pleased to help you with your widgets.')
+    # document.add_paragraph('Please feel free to contact me for any additional information.')
+    # document.add_paragraph('I look forward to assisting you in this project.')
+    #
+    # document.add_paragraph()
+    # document.add_paragraph('Best regards,')
+    # document.add_paragraph('Acme Specialist 1]')
+    # document.add_page_break()
+    #
+    # # Prepare document for download
+    # # -----------------------------
+    # f = StringIO()
+    # document.save(f)
+    # length = f.tell()
+    # f.seek(0)
+    # response = HttpResponse(
+    #     f.getvalue(),
+    #     content_type='application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+    # )
+    # response['Content-Disposition'] = 'attachment; filename=' + docx_title
+    # response['Content-Length'] = length
+    # return response
         # render_to_response('docx.html', context_instance=RequestContext(request))
 
     #

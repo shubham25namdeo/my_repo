@@ -26,6 +26,14 @@ class CommentForm(models.Model):
     class Meta:
         verbose_name_plural=u'Chats'
 
+class Note(models.Model):
+    logged_user = models.CharField(max_length=30,blank=True)
+    title = models.TextField(max_length=20)
+    notes = models.CharField(max_length=200)
+    dates = models.DateTimeField(default=datetime.datetime.utcnow().replace(tzinfo=utc))
+    class Meta:
+        verbose_name_plural=u'Notes'
+
 class Art(models.Model):
     title = models.TextField(max_length=20)
     desc = models.CharField(max_length=200)

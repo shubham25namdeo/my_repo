@@ -39,6 +39,12 @@ class CommentForm(UserCreationForm):
     class Meta:
         fields = ('comment',)
 
+class NotesForm(forms.ModelForm):
+    notes = forms.CharField(required=True)
+    class Meta:
+        fields = ('notes','title',)
+        model = Note
+
 
 class ArtForm(forms.ModelForm):
       class Meta:
