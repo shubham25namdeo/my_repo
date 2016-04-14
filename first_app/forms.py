@@ -1,5 +1,7 @@
 
 from django import forms
+from django.contrib.admin.widgets import AdminDateWidget
+from django.forms import SelectDateWidget, DateField
 from .models import *
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
@@ -52,6 +54,15 @@ class ArtForm(forms.ModelForm):
         model = Art
         docfile = forms.FileField(
             label='Select a file',
+        )
+
+
+class ConsultantForm(forms.ModelForm):
+      class Meta:
+        fields = ('cname', 'projtype', 'location', 'joindate', 'resume', 'JD','log_user',)
+        model = Consultant
+        resume = forms.FileField(
+            label='Upload A Resume',
         )
 
 class WordForm(forms.ModelForm):

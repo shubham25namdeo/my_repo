@@ -1,44 +1,61 @@
 {% extends "base.html" %}
 
 {% block content %}
-<form class="form-signup" action="/register/" method='POST' >{% csrf_token %}
-    <h2>Create your account</h2>
-    <div class="fieldWrapper">
-        <label>First name</label><br>
-        {{ form.first_name }}
-    </div>
-    <br>
-    <div class="fieldWrapper">
-        <label>Last name</label><br>
-        {{ form.last_name }}
-    </div>
-    <br>
-    <div class="fieldWrapper">
-        {{ form.email.errors }}
-        {{ form.email.errors }}
-        <label>E-mail</label><br>
-        {{ form.email }}
-    </div>
-    <br>
-    <div class="fieldWrapper">
-    {{form.errors.values.0}}
-        <label>Username</label><br>
-        {{ form.username }}
-    </div>
-    <br>
-    <div class="fieldWrapper">
-        {{form.errors.values.1}}
-        <label>Password</label><br>
-        {{ form.password1 }}
-    </div>
-    <br>
-    <div class="fieldWrapper">
-        <label>Password again</label><br>
-        {{ form.password2 }}
-    </div>
-    <br>
-    <input type="submit" name="submit" class="btn btn-primary" value="Create account">
-</form>
+    <form class="form-signup" action="/register/" method='POST'>{% csrf_token %}
+        <h3 style="text-align: center">Create your account</h3>
+
+        <div class="row">
+            <div class="col s12 m6">
+                <div class="fieldWrapper">
+                    <label>First name</label><br>
+                    {{ form.first_name }}
+                </div>
+            </div>
+            <div class="col s12 m6">
+
+                {#    <div class="fieldWrapper">#}
+                <label>Last name</label><br>
+                {{ form.last_name }}
+            </div>
+        <div class="col s12 m6">
+
+            {#    <div >#}
+            {{ form.email.errors }}
+            <label>E-mail</label><br>
+            {{ form.email }}
+            {#    </div>#}
+        </div>
+        <div class="col s12 m6">
+
+            {#    <div class="fieldWrapper">#}
+            {{ form.errors.values.0 }}
+            <label>Username</label><br>
+            {{ form.username }}
+            {#    </div>#}
+        </div>
+        <div class="col s12 m6">
+
+            {#    <div class="fieldWrapper">#}
+            {{ form.errors.values.1 }}
+            <label>Password</label><br>
+            {{ form.password1 }}
+            {#    </div>#}
+        </div>
+        <div class="col s12 m6">
+            {#                            <div class="fieldWrapper">#}
+            <label>Password again</label><br>
+            {{ form.password2 }}
+        {#        </div>#}
+            <br>
+            </div>
+        <button  class="button submit center" data-analytics="sign-in">
+            Sign Up<span class="spinner"></span>
+        </button>
+            <span class="create-account">
+            <a data-analytics="create-account" href="/">Already Registered</a></span>
+        </div>
+
+    </form>
 
 
 

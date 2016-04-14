@@ -11,8 +11,6 @@ import hashlib, datetime, random
 from django.utils import timezone
 from reportlab.pdfgen import canvas
 from django.utils.html import strip_tags
-# from docx import *
-# from docx.shared import Inches
 
 
 
@@ -104,16 +102,6 @@ def newnotes(request):
         form.save()
         user_loggedin = str(request.user)
         my_data = Note.objects.all().filter(logged_user=user_loggedin)
-        # print_dates=''
-        # print_notes=''
-        # print_title=''
-        # for j in my_data:
-        #     print (j)
-        #     if j.logged_user == user_loggedin:
-        #         print(j.notes,"sadfsfsdfsfsfd")
-        #         print_notes = j.notes
-        #         print_title = j.title
-        #         print_dates = j.dates
         return render_to_response('notes.html', {'user_loggedin': user_loggedin, 'my_data':my_data},
                                               context_instance=RequestContext(request))
 
@@ -207,10 +195,53 @@ def docs(request):
         p = canvas.Canvas(response)
         filtered = strip_tags(list.texts)[:-2]
         p.drawString(100, 750, filtered)
-        print (list.texts)
         p.showPage()
         p.save()
         return response
+
+    else:
+        comm= Word.objects.all()
+        form = WordForm()
+        return render_to_response('docx.html',{ "comm": comm, "form": form}, context_instance=RequestContext(request))
+
+
+def add_consultant(request):
+    args = {}
+    args.update(csrf(request))
+    if request.method == 'POST':
+        form = ConsultantForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.cname = request.POST.get('cname')
+            form.projtype = request.POST.get('projtype')
+            form.location = request.POST.get('location')
+            form.joindate = request.POST.get('datepicker')
+            form.resume = Consultant(resume = request.FILES['resume'])
+            form.JD = request.POST.get('JD')
+            form.log_user = request.user
+                # POST.get('log_user')
+            form.dates = datetime.datetime.utcnow().replace(tzinfo=utc)
+            print(form.log_user, "a!!!!!!!!!!!!!!!!!1")
+            form.save()
+            user_loggedin = str(request.user)
+            my_data = Consultant.objects.all().filter(log_user=user_loggedin)
+            return render_to_response('addconsultant.html', {'user_loggedin': user_loggedin, 'my_data':my_data, 'form': form,},
+                                                  context_instance=RequestContext(request))
+
+    else:
+        user_loggedin = str(request.user)
+        my_data = Consultant.objects.all()
+        form = ConsultantForm()
+        for i in my_data:
+            print(i.log_user,"skdkdkddkdk")
+
+
+        return render_to_response('addconsultant.html', {'user_loggedin': user_loggedin, 'my_data':my_data, 'form':form},
+                                              context_instance=RequestContext(request))
+
+
+
+
+
     #     document = Document()
     # docx_title="TEST_DOCUMENT.docx"
     # # ---- Cover Letter ----
@@ -257,9 +288,3 @@ def docs(request):
     #     comm= Word.objects.all()
     #
 
-
-    else:
-        comm= Word.objects.all()
-        form = WordForm()
-        print ("!@#$%^&*")
-        return render_to_response('docx.html',{ "comm": comm, "form": form}, context_instance=RequestContext(request))

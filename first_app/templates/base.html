@@ -1,30 +1,28 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+{% load static %}
 <html>
-    <head>
+<head>
     <meta charset="UTF-8">
 
-        <title>Django Login Application |
+    <title style="background-color: #004d40">Django Login Application |
         {% block title %}{% endblock %}</title>
-     <!-- Compiled and minified CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
-
-  <!-- Compiled and minified JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="{% static 'first_app/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'first_app/css/materialize.min.css' %}">
+    <link rel="stylesheet" href="{% static 'first_app/css/materialize.css' %}">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
 </head>
-    <body>
-    <nav>
-        <div class="nav-wrapper">
-          <img src="http://www.consultadd.com/wp-content/uploads/Final_logo.png">
-          <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="/accounts/login/">Login</a></li>
-            <li><a href="/register/">Register</a></li>
-          </ul>
-        </div>
-    </nav>
-        <h1>{% block head %}{% endblock %}</h1>
+<body style="background-color: rgb(203, 0, 8)">
+            <a  class="logo" data-analytics="site logo" href="/">
+                <img style="margin-left: 546px;margin-bottom: 60px" width="250" title="C.ADD" alt="ConsultAdd"
+                     src="http://www.consultadd.com/wp-content/uploads/Final_logo.png">
+            </a>
+<section class="login">
 
-            {% block content %}{% endblock %}
-
-
-    </body>
+    <h2 style="text-align: center">{% block head %}{% endblock %}</h2>
+    {% block content %}{% endblock %}
+</section>
+</body>
 </html>

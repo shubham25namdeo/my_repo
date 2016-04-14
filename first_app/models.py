@@ -47,4 +47,15 @@ class Word(models.Model):
     dates = models.DateTimeField(default=datetime.datetime.utcnow().replace(tzinfo=utc))
     class Meta:
         verbose_name_plural=u'Documents'
-
+#
+class Consultant(models.Model):
+    cname = models.TextField(max_length=200, blank=False)
+    projtype = models.CharField(max_length=200, blank=False)
+    location = models.CharField(max_length=200)
+    joindate = models.DateField()
+    resume = models.FileField(upload_to='documents/%Y/%m/%d', default="")
+    JD = models.CharField(max_length=200)
+    log_user = models.CharField(max_length=30,null=False)
+    dates = models.DateTimeField(default=datetime.datetime.utcnow().replace(tzinfo=utc))
+    class Meta:
+        verbose_name_plural=u'Consultants'

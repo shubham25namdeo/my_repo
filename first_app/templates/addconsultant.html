@@ -1,10 +1,92 @@
-<!DOCTYPE html>
-<html lang="en">
+{% load staticfiles %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+{% load staticfiles %}
+
 <head>
     <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
+    <title>Add Consultant</title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="{% static 'first_app/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'first_app/css/materialize.min.css' %}">
+    <link rel="stylesheet" href="{% static 'first_app/css/materialize.css' %}">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
 
+{#    <link rel="stylesheet" href="{% static 'first_app/css/new-style.css' %}">#}
+{#    <script type='text/javascript' src='{% static 'first_app/js/jquery-1.11.3.js' %}'></script>#}
+{#    <script type='text/javascript' src='{% static 'first_app/js/plugins.js' %}'></script>#}
+
+      <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css">
+
+
+
+    <script>
+        $(function () {
+{#            var b=$("#datepicker").datepicker({ dateFormat: 'yy-mm-dd' });#}
+            $("#datepicker").html($("#datepicker").datepicker({ dateFormat: 'yy-mm-dd' }));
+        });
+    </script>
+
+</head>
+
+<body style="background-color: rgb(203, 0, 8)">
+
+<a class="logo" data-analytics="site logo" href="/">
+    <img style="margin-left: 546px;margin-bottom: 30px" title="C.ADD" alt="ConsultAdd"
+         src="http://www.consultadd.com/wp-content/uploads/Final_logo.png">
+</a>
+<section class="login">
+    <form method="POST" name="consultantform" action="/actant/" enctype="multipart/form-data">{% csrf_token %}
+        <h3 style="text-align: center">Add Consultant</h3>
+        {{ form.non_field_errors }}
+        {{ form.docfile.errors }}
+
+        <div class="row">
+            <div class="col s12 m6">
+                Consultant Name:<input class="materialize-textarea" name="cname" id="cname"
+                                    style="font-family:sans-serif;font-size:1.2em;">
+            </div>
+            <div class="col s12 m6">
+                Project Type:<input class="materialize-textarea" name="projtype" id="projtype"
+                                    style="font-family:sans-serif;font-size:1.2em;">
+            </div>
+            <div class="col s12 m6">
+                Location:<input class="materialize-textarea" name="location" id="location"
+                                style="font-family:sans-serif;font-size:1.2em;">
+            </div>
+            <div class="col s12 m6">
+                Joining Date:
+                <input type="text" id="datepicker" name="joindate">
+
+                {#                <input class="materialize-textarea" name="joindate" id="joindate"#}
+                {#                                    style="font-family:sans-serif;font-size:1.2em;">#}
+            </div>
+            <div class="col s12 m6">
+                Upload Resume:<br>
+
+                {{ form.resume }}
+                {#                <input id="resume" name="resume" type="file">#}
+            </div>
+            <div class="col s12 m6">
+                Job Description:<input class="materialize-textarea" name="JD" id="JD"
+                                       style="font-family:sans-serif;font-size:1.2em;">
+            </div>
+            <input type="hidden"id = "log_user" name="log_user" value=" {{ user_loggedin }}"/>
+
+
+            <button style="" class="button submit center" data-analytics="sign-in">
+                Add<span class="spinner">
+                </span>
+            </button>
+            <span class="create-account">
+                <a data-analytics="create-account" href="/home">Home</a>
+            </span>
+        </div>
+
+    </form>
+</section>
 </body>
-</html>

@@ -5,6 +5,7 @@ urlpatterns = [
     url(r'^success/', ('first_app.views.register_success')),
     url(r'^confirm/(?P<activation_key>\w+)/', ('first_app.views.register_confirm')),
     url(r'^$', 'django.contrib.auth.views.login'),
+    url(r'^actant/$', 'first_app.views.add_consultant'),
     url(r'^accounts/login/$', 'django.contrib.auth.views.login'), # If user is not login it will redirect to login page
     url(r'^logout/$', ('first_app.views.logout_page')),
     url(r'^chats/$', ('first_app.views.chats')),
@@ -12,6 +13,7 @@ urlpatterns = [
     url(r'^articles/$', ('first_app.views.articles')),
     url(r'^home/$', ('first_app.views.home')),
     url(r'^notes/$', ('first_app.views.newnotes')),
+
 ]
 
 # from django.conf.urls import url, include

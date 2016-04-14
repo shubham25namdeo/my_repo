@@ -148,13 +148,13 @@ MEDIA_ROOT = os.path.join(ENV_PATH, 'media/')
 
 
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'id@gmail.com'
-EMAIL_HOST_PASSWORD = 'password'
+EMAIL_HOST_USER = 'shubham.namdeo@gmail.com'
+EMAIL_HOST_PASSWORD = 'trojan99seven'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = 'id@gmail.com'
+DEFAULT_FROM_EMAIL = 'shubham.namdeo@gmail.com'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-SERVER_EMAIL = 'id@gmail.com'
+SERVER_EMAIL = 'shubham.namdeo@gmail.com'
 
 
 STATICFILES_DIRS = (

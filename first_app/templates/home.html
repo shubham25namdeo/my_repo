@@ -1,151 +1,560 @@
-{% load staticfiles %}
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-{% load staticfiles %}
-
+{% load static %}
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>Welcome {{ user.first_name }}</title>
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="{% static 'first_app/css/materialize.min.css' %}">
-    <link rel="stylesheet" href="{% static 'first_app/css/materialize.css' %}">
-    <script type='text/javascript' src='{% static 'first_app/js/materialize.min.js' %}'></script>
-    <script type='text/javascript' src="{% static "first_app/js/materialize.js" %}"></script>
-    <script type='text/javascript' src="{% static "first_app/js/init.js" %}"></script>
+	<meta charset="UTF-8">
+	<title>	CAET</title>
 
-    <script type='text/javascript' src="{% static "first_app/js/jquery-2.1.4.min.js" %}"></script>
+	<meta name="description" content="Kite Coming Soon HTML Template by Jewel Theme" >
+	<meta name="author" content="Jewel Theme">
 
-    <script type='text/javascript' src="{% static "first_app/js/jquery.timeago.min.js" %}"></script>
+	<!-- Mobile Specific Meta -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
 
-    <script type='text/javascript' src="{% static "first_app/js/live.js" %}"></script>
+	<!-- Bootstrap  -->
+	<link href="{% static 'first_app/css/bootstrap.min.css' %}" rel="stylesheet">
 
-    <script type='text/javascript' src="{% static "first_app/js/lunr.min.js" %}"></script>
-    <script type='text/javascript' src="{% static "first_app/js/prism.js" %}"></script>
-    <script type='text/javascript' src="{% static "first_app/js/search.js" %}"></script>
+	<!-- icon fonts font Awesome -->
+	<link href="{% static 'first_app/css/font-awesome.min.css' %}" rel="stylesheet">
 
+	<!-- Custom Styles -->
+	<link href="{% static 'first_app/css/style2.css' %}" rel="stylesheet">
 
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+	<!--[if lt IE 9]>
+	<script "{% static 'first_app/js/html5shiv.js' %}"></script>
+	<![endif]-->
+
 </head>
 <body>
 
-<nav>
-    <div class="nav-wrapper">
-        <img src="http://www.consultadd.com/wp-content/uploads/Final_logo.png">
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li ><a style="color: black" href="/docx/">View Documents</a></li>
-            <li ><a style="color: black" href="/notes/">View Notes</a></li>
-            <li ><a style="color: black" href="/chats/">Chat Box</a></li>
-            <li ><a style="color: black" href="/articles/">Articles</a></li>
-            <li ><a style="color: black" href="/logout/">Logout</a></li>
-        </ul>
-    </div>
-</nav>
 
-<div class="card-panel teal lighten-2">
-    <h1>{% block head %}{% endblock %}</h1>
-    {% block content %}
-        <p>Welcome {{ user.first_name }} !!!</p>
-    {% endblock %}
-</div>
-<div class="parallax-container">
-    <div class="row">
-        <div class="col s12 m3">
-          <div class="card blue-grey darken-1">
-            <div class="card-content white-text">
-              <span class="card-title">Card Title</span>
-              <p>I am a very simple card. I am good at containing small bits of information.
-              I am convenient because I require little markup to use effectively.</p>
-            </div>
-            <div class="card-action">
-              <a href="#">This is a link</a>
-              <a href="#">This is a link</a>
-            </div>
-          </div>
-        </div>
-        <div class="col s12 m3">
-          <div class="card blue-grey darken-1">
-            <div class="card-content white-text">
-              <span class="card-title">Card Title</span>
-              <p>I am a very simple card. I am good at containing small bits of information.
-              I am convenient because I require little markup to use effectively.</p>
-            </div>
-            <div class="card-action">
-              <a href="#">This is a link</a>
-              <a href="#">This is a link</a>
-            </div>
-          </div>
-        </div>
-        <div class="col s12 m3">
-          <div class="card blue-grey darken-1">
-            <div class="card-content white-text">
-              <span class="card-title">Card Title</span>
-              <p>I am a very simple card. I am good at containing small bits of information.
-              I am convenient because I require little markup to use effectively.</p>
-            </div>
-            <div class="card-action">
-              <a href="#">This is a link</a>
-              <a href="#">This is a link</a>
-            </div>
-          </div>
-        </div>
-        <div class="col s12 m3">
-          <div class="card blue-grey darken-1">
-            <div class="card-content white-text">
-              <span class="card-title">Card Title</span>
-              <p>I am a very simple card. I am good at containing small bits of information.
-              I am convenient because I require little markup to use effectively.</p>
-            </div>
-            <div class="card-action">
-              <a href="#">This is a link</a>
-              <a href="#">This is a link</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    <div class="row">
-        <div class="col s12 m12">
-          <div class="card blue-grey darken-1">
-            <div class="card-content white-text">
-              <span class="card-title">Card Title</span>
-              <p>I am a very simple card. I am good at containing small bits of information.
-              I am convenient because I require little markup to use effectively.</p>
-            </div>
-            <div class="card-action">
-              <a href="#">This is a link</a>
-              <a href="#">This is a link</a>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    <div class="parallax"><img src={% static 'first_app/images/2.jpg' %}></div>
-</div>
-<div class="section grey">
-    <div class="row container">
-        <h2 class="header">Parallax</h2>
-
-        <p class="grey-text text-darken-3 lighten-3">Parallax is an effect where the background content or image in this
-            case, is moved at a different speed than the foreground content while scrolling.</p>
-    </div>
-</div>
-<div class="parallax-container">
-<p style="color: white">Now that we have told where Django can find our various files as well as the URLs they can be located under, we need to actually serve the files for incoming requests. Generally there are two possible scenarios; a production or development environment.
-
-When a user requests a static or media file in a production environment, we want our web server (nginx/apache etc.) to deal with the request and return the file instead of passing the request down to the application server (uwsgi/gunicorn etc.). To do this we need to configure our webserver to listen for requests that match our STATIC_URL and MEDIA_URL and return the files immediately from the STATIC_ROOT and MEDIA_ROOT folders. How we go about configuring this is outside the scope of this post, but there is an example for Nginx on Stackoverflow as well as Apache.
-
-On the other hand, when working in a development environment, we don't want to go through the complications of having to set up and configure a fully fledged web server. Thankfully Django provide a very basic web server application that we can use to server our application during development. We can also server our static and media files through this development server too.</p>
-    <div class="parallax"><img src={% static 'first_app/images/1.jpg' %}></div>
-</div>
-<img src="file:///home/cpu002/PycharmProjects/first_proj/first_app/templates/1.jpg" alt="">
-
-<script>
-    $(document).ready(function () {
-        $('.parallax').parallax();
-    });
-</script>
+	<!-- Preloader -->
+	<div id="preloader">
+		<div id="loader">
+			<div class="dot"></div>
+			<div class="dot"></div>
+			<div class="dot"></div>
+			<div class="dot"></div>
+			<div class="dot"></div>
+			<div class="dot"></div>
+			<div class="dot"></div>
+			<div class="dot"></div>
+			<div class="lading"></div>
+		</div>
+	</div><!-- /#preloader -->
+	<!-- Preloader End-->
 
 
-</body>
-</html>
+	<!-- Main Menu -->
+	<div id="main-menu" class="navbar navbar-default navbar-fixed-top" role="navigation">
+
+		<div class="navbar-header">
+			<!-- responsive navigation -->
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="sr-only">Toggle navigation</span>
+				<i class="fa fa-bars"></i>
+			</button> <!-- /.navbar-toggle -->
+
+		</div> <!-- /.navbar-header -->
+
+		<nav class="collapse navbar-collapse">
+			<!-- Main navigation -->
+			<ul id="headernavigation" class="nav navbar-nav">
+				<li class="active"><a href="#page-top">Home</a></li>
+				<li><a href="#about">About</a></li>
+				<li><a href="#subscribe">Subscribe</a></li>
+				<li><a href="#contact">Contact</a></li>
+
+
+
+
+			</ul> <!-- /.nav .navbar-nav -->
+			<!-- My navigation -->
+            <ul style="align-self: baseline" id="nav-mobile" class="nav navbar-nav">
+                <li ><a  href="/docx/">View Documents</a></li>
+                <li ><a  href="/actant/">Add Consultant</a></li>
+                <li ><a  href="/notes/">View Notes</a></li>
+                <li ><a  href="/chats/">Chat Box</a></li>
+                <li ><a  href="/articles/">Articles</a></li>
+                <li ><a  href="/logout/">Logout</a></li>
+            </ul>
+		</nav> <!-- /.navbar-collapse  -->
+	</div><!-- /#main-menu -->
+	<!-- Main Menu End -->
+
+
+	<!-- Page Top Section -->
+	<section id="page-top" class="section-style" data-background-image={% static 'first_app/images/background/page-top.jpg' %}>
+		<div class="pattern height-resize">
+			<div class="container">
+				<h1 class="site-title">
+                    <img src="http://www.consultadd.com/wp-content/uploads/Final_logo.png">
+					ET
+				</h1><!-- /.site-title -->
+				<h3 class="section-name">
+					<span>
+                        Welcome {{ user.first_name }},<br>
+						We Are
+					</span>
+				</h3><!-- /.section-name -->
+				<h2 class="section-title">
+					Coming Soon
+				</h2><!-- /.Section-title  -->
+				<div id="time_countdown" class="time-count-container">
+
+					<div class="col-sm-3">
+						<div class="time-box">
+							<div class="time-box-inner dash days_dash animated" data-animation="rollIn" data-animation-delay="300">
+								<span class="time-number">
+									<span class="digit">0</span>
+									<span class="digit">0</span>
+									<span class="digit">0</span>
+								</span>
+								<span class="time-name">Days</span>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-sm-3">
+						<div class="time-box">
+							<div class="time-box-inner dash hours_dash animated" data-animation="rollIn" data-animation-delay="600">
+								<span class="time-number">
+									<span class="digit">0</span>
+									<span class="digit">0</span>
+								</span>
+								<span class="time-name">Hours</span>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-sm-3">
+						<div class="time-box">
+							<div class="time-box-inner dash minutes_dash animated" data-animation="rollIn" data-animation-delay="900">
+								<span class="time-number">
+									<span class="digit">0</span>
+									<span class="digit">0</span>
+								</span>
+								<span class="time-name">Minutes</span>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-sm-3">
+						<div class="time-box">
+							<div class="time-box-inner dash seconds_dash animated" data-animation="rollIn" data-animation-delay="1200">
+								<span class="time-number">
+									<span class="digit">0</span>
+									<span class="digit">0</span>
+								</span>
+								<span class="time-name">Seconds</span>
+							</div>
+						</div>
+					</div>
+
+				</div><!-- /.time-count-container -->
+
+				<p class="time-until">
+					<span>Time Until Launce</span>
+				</p><!-- /.time-until -->
+
+
+
+				<div class="next-section">
+					<a class="go-to-about"><span></span></a>
+				</div><!-- /.next-section -->
+
+			</div><!-- /.container -->
+		</div><!-- /.pattern -->
+	</section><!-- /#page-top -->
+	<!-- Page Top Section  End -->
+
+
+	<!-- About Us Section -->
+	<section id="about" class="section-style" data-background-image={% static 'first_app/images/background/about-us.jpg' %}>
+		<div class="pattern height-resize">
+			<div class="container">
+				<h3 class="section-name">
+					<span>
+						About Us
+					</span>
+				</h3><!-- /.section-name -->
+				<h2 class="section-title">
+					We Are dedicated
+				</h2><!-- /.Section-title  -->
+				<p class="section-description">
+					Yes, very dedicated. :D
+				</p><!-- /.section-description -->
+
+				<div class="team-container">
+					<div class="row">
+						<div class="col-sm-4">
+							<div class="team-member">
+								<figure>
+									<img src={% static 'first_app/images/team/t2.png' %} alt="Team Member">
+									<figcaption>
+										<p class="member-name">Shubham</p>
+										<p class="designation">
+											CEO
+										</p><!-- /.designation -->
+
+									</figcaption>
+								</figure>
+								<div class="social-btn-container">
+									<div class="team-socail-btn">
+										<span class="social-btn-box facebook-btn-container">
+											<a href="#" class="facebook-btn">
+												<i class="fa fa-facebook"></i>
+											</a><!-- /.facebook-btn -->
+										</span><!-- /.social-btn-box -->
+
+										<span class="social-btn-box twitter-btn-container">
+											<a href="#" class="twitter-btn">
+												<i class="fa fa-twitter"></i>
+											</a><!-- /.twitter-btn -->
+										</span><!-- /.social-btn-box -->
+
+										<span class="social-btn-box linkedin-btn-container">
+											<a href="#" class="linkedin-btn">
+												<i class="fa fa-linkedin"></i>
+											</a><!-- /.linkedin-btn -->
+										</span><!-- /.social-btn-box -->
+
+										<span class="social-btn-box github-btn-container">
+											<a href="#" class="github-btn">
+												<i class="fa fa-github-alt"></i>
+											</a><!-- /.github-btn -->
+										</span><!-- /.social-btn-box -->
+									</div><!-- /.team-socail-btn -->
+								</div><!-- /.social-btn-container -->
+							</div><!-- /.team-member -->
+						</div><!-- /.col-sm-4 -->
+
+
+						<div class="col-sm-4">
+							<div class="team-member">
+								<figure>
+									<img src={% static 'first_app/images/team/t2.png' %} alt="Team Member">
+									<figcaption>
+										<p class="member-name">
+											Shubham
+										</p><!-- /.member-name -->
+										<p class="designation">
+											Designer
+										</p><!-- /.designation -->
+
+									</figcaption>
+								</figure>
+								<div class="social-btn-container">
+									<div class="team-socail-btn">
+										<span class="social-btn-box facebook-btn-container">
+											<a href="#" class="facebook-btn">
+												<i class="fa fa-facebook"></i>
+											</a><!-- /.facebook-btn -->
+										</span><!-- /.social-btn-box -->
+
+										<span class="social-btn-box twitter-btn-container">
+											<a href="#" class="twitter-btn">
+												<i class="fa fa-twitter"></i>
+											</a><!-- /.twitter-btn -->
+										</span><!-- /.social-btn-box -->
+
+										<span class="social-btn-box linkedin-btn-container">
+											<a href="#" class="linkedin-btn">
+												<i class="fa fa-linkedin"></i>
+											</a><!-- /.linkedin-btn -->
+										</span><!-- /.social-btn-box -->
+
+										<span class="social-btn-box github-btn-container">
+											<a href="#" class="github-btn">
+												<i class="fa fa-github-alt"></i>
+											</a><!-- /.github-btn -->
+										</span><!-- /.social-btn-box -->
+									</div><!-- /.team-socail-btn -->
+								</div><!-- /.social-btn-container -->
+							</div><!-- /.team-member -->
+						</div><!-- /.col-sm-4 -->
+
+
+						<div class="col-sm-4">
+							<div class="team-member">
+								<figure>
+									<img src={% static 'first_app/images/team/t2.png' %} alt="Team Member">
+									<figcaption>
+										<p class="member-name">
+											Shubham
+										</p><!-- /.member-name -->
+										<p class="designation">
+											Developer
+										</p><!-- /.designation -->
+
+									</figcaption>
+								</figure>
+								<div class="social-btn-container">
+									<div class="team-socail-btn">
+										<span class="social-btn-box facebook-btn-container">
+											<a href="#" class="facebook-btn">
+												<i class="fa fa-facebook"></i>
+											</a><!-- /.facebook-btn -->
+										</span><!-- /.social-btn-box -->
+
+										<span class="social-btn-box twitter-btn-container">
+											<a href="#" class="twitter-btn">
+												<i class="fa fa-twitter"></i>
+											</a><!-- /.twitter-btn -->
+										</span><!-- /.social-btn-box -->
+
+										<span class="social-btn-box linkedin-btn-container">
+											<a href="#" class="linkedin-btn">
+												<i class="fa fa-linkedin"></i>
+											</a><!-- /.linkedin-btn -->
+										</span><!-- /.social-btn-box -->
+
+										<span class="social-btn-box github-btn-container">
+											<a href="#" class="github-btn">
+												<i class="fa fa-github-alt"></i>
+											</a><!-- /.github-btn -->
+										</span><!-- /.social-btn-box -->
+									</div><!-- /.team-socail-btn -->
+								</div><!-- /.social-btn-container -->
+							</div><!-- /.team-member -->
+						</div><!-- /.col-sm-4 -->
+					</div><!-- /.row -->
+
+				</div><!-- /.team-container -->
+
+				<div class="next-section">
+					<a class="go-to-subscribe"><span></span></a>
+				</div><!-- /.next-section -->
+
+			</div><!-- /.container -->
+		</div><!-- /.pattern -->
+
+
+	</section><!-- /#about -->
+	<!-- About Us Section End -->
+
+
+
+	<!-- Subscribe Section -->
+	<section id="subscribe" class="section-style" data-background-image={% static 'first_app/images/background/newsletter.jpg' %}>
+		<div class="pattern height-resize">
+			<div class="container">
+				<h3 class="section-name">
+					<span>
+						Subscribe
+					</span>
+				</h3><!-- /.section-name -->
+				<h2 class="section-title">
+					Our Newsletter
+				</h2><!-- /.Section-title  -->
+				<p class="section-description">
+					No newsletter we have..:P
+				</p><!-- /.section-description -->
+
+				<form class="news-letter" method="post">
+					<p class="alert-success"></p>
+					<p class="alert-warning"></p>
+
+					<div class="subscribe-hide">
+						<input class="form-control" type="email" id="subscribe-email" name="subscribe-email" placeholder="Email Address"  required>
+						<button  type="submit" id="subscribe-submit" class="btn"><i class="fa fa-envelope"></i></button>
+						<span id="subscribe-loading" class="btn"> <i class="fa fa-refresh fa-spin"></i> </span>
+						<div class="subscribe-error"></div>
+					</div><!-- /.subscribe-hide -->
+					<div class="subscribe-message"></div>
+				</form><!-- /.news-letter -->
+
+				<div class="social-btn-container">
+					<span class="social-btn-box">
+						<a href="#" class="facebook-btn">
+							<i class="fa fa-facebook"></i></a>
+						</span><!-- /.social-btn-box -->
+
+						<span class="social-btn-box">
+							<a href="#" class="twitter-btn"><i class="fa fa-twitter"></i></a>
+						</span><!-- /.social-btn-box -->
+
+						<span class="social-btn-box">
+							<a href="#" class="linkedin-btn"><i class="fa fa-linkedin"></i></a>
+						</span><!-- /.social-btn-box -->
+
+						<span class="social-btn-box">
+							<a href="#" class="google-plus-btn"><i class="fa fa-google-plus"></i></a>
+						</span><!-- /.social-btn-box -->
+
+
+						<span class="social-btn-box">
+							<a href="#" class="youtube-btn"><i class="fa fa-youtube"></i></a>
+						</span><!-- /.social-btn-box -->
+
+
+
+					</div><!-- /.social-btn-container -->
+
+					<div class="next-section">
+						<a class="go-to-contact"><span></span></a>
+					</div><!-- /.next-section -->
+
+				</div><!-- /.container -->
+			</div><!-- /.pattern -->
+
+		</section><!-- /#subscribe -->
+		<!-- Subscribe Section End -->
+
+
+
+		<!-- Contact Section -->
+		<section id="contact" class="section-style" data-background-image={% static 'first_app/images/background/contact.jpg' %}>
+			<div class="pattern height-resize">
+				<div class="container">
+					<h3 class="section-name">
+						<span>
+							Contact
+						</span>
+					</h3><!-- /.section-name -->
+					<h2 class="section-title">
+						Get in Touch
+					</h2><!-- /.Section-title  -->
+					<p class="section-description">
+						Really!!?
+					</p><!-- /.section-description -->
+
+					<form id="contact-form" action="email.php" method="post" class="clearfix">
+						<div class="contact-box-hide">
+							<div class="col-sm-6">
+								<input type="text"  class="form-control" id="first_name" name="first_name" required placeholder="First Name">
+								<span class="first-name-error"></span>
+							</div>
+							<div class="col-sm-6">
+								<input type="text"  class="form-control" id="last_name" name="last_name" required placeholder="Last Name">
+								<span class="last-name-error"></span>
+							</div>
+							<div class="col-sm-6">
+								<input type="email" class="form-control"  id="contact_email" name="contact_email" required placeholder="Email Address">
+								<span class="contact-email-error"></span>
+							</div>
+							<div class="col-sm-6">
+								<input type="text"  class="form-control" id="subject" name="contact_subject" required placeholder="Subject">
+								<span class="contact-subject-error"></span>
+							</div>
+							<div class="col-sm-10">
+								<textarea class="form-control" rows="5" id="message" name="message" required placeholder="Message"></textarea>
+								<span class="contact-message-error"></span>
+							</div>
+							<div class="col-sm-2">
+								<button id="contact-submit" class="btn custom-btn col-xs-12" type="submit" name="submit"><i class="fa fa-rocket"></i></button>
+								<span id="contact-loading" class="btn custom-btn col-xs-12"> <i class="fa fa-refresh fa-spin"></i> </span>
+							</div>
+						</div><!-- /.contact-box-hide -->
+						<div class="contact-message"></div>
+
+					</form><!-- /#contact-form -->
+
+					<div class="next-section">
+						<a class="go-to-page-top"><span></span></a>
+					</div><!-- /.next-section -->
+
+				</div><!-- /.container -->
+			</div><!-- /.pattern -->
+
+		</section><!-- /#contact -->
+		<!-- Contact Section End -->
+
+
+
+		<!-- Footer Section -->
+		<footer id="footer-section">
+			<p class="copyright">
+				&copy; <a href="http://jeweltheme.com/html/kite/">Kite</a> 2014-2015, All Rights Reserved. Designed by & Developed by <a href="http://jeweltheme.com">Jewel Theme</a>
+			</p>
+		</footer>
+		<!-- Footer Section End -->
+
+
+		<!-- jQuery Library -->
+		<script type="text/javascript" src="{% static 'first_app/js/jquery-2.1.0.min.js'%}"></script>
+		<!-- Modernizr js -->
+		<script type="text/javascript"  src="{% static 'first_app/js/modernizr-2.8.0.min.js'%}"> </script>
+		<!-- Plugins -->
+		<script type="text/javascript" src="{% static 'first_app/js/plugins2.js'%}"></script>
+		<!-- Custom JavaScript Functions -->
+		<script type="text/javascript" src="{% static 'first_app/js/functions.js'%}"></script>
+		<!-- Custom JavaScript Functions -->
+		<script type="text/javascript" src="{% static 'first_app/js/jquery.ajaxchimp.min.js'%}"></script>
+
+	</body>
+	</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{#{% load staticfiles %}#}
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"#}
+{#        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#{% load staticfiles %}#}
+{##}
+{#<html>#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>Welcome {{ user.first_name }}</title>#}
+{#    <!-- Compiled and minified CSS -->#}
+{#    <link rel="stylesheet" href="{% static 'first_app/css/materialize.min.css' %}">#}
+{#    <link rel="stylesheet" href="{% static 'first_app/css/materialize.css' %}">#}
+{#    <script type='text/javascript' src='{% static 'first_app/js/materialize.min.js' %}'></script>#}
+{#    <script type='text/javascript' src="{% static "first_app/js/materialize.js" %}"></script>#}
+{#    <script type='text/javascript' src="{% static "first_app/js/init.js" %}"></script>#}
+{##}
+{#    <script type='text/javascript' src="{% static "first_app/js/jquery-2.1.4.min.js" %}"></script>#}
+{##}
+{#    <script type='text/javascript' src="{% static "first_app/js/jquery.timeago.min.js" %}"></script>#}
+{##}
+{#    <script type='text/javascript' src="{% static "first_app/js/live.js" %}"></script>#}
+{##}
+{#    <script type='text/javascript' src="{% static "first_app/js/lunr.min.js" %}"></script>#}
+{#    <script type='text/javascript' src="{% static "first_app/js/prism.js" %}"></script>#}
+{#    <script type='text/javascript' src="{% static "first_app/js/search.js" %}"></script>#}
+{##}
+{##}
+{#    <!-- Compiled and minified JavaScript -->#}
+{#</head>#}
+{#<body>#}
+{##}
+{#<nav>#}
+{#    <div class="nav-wrapper">#}
+{#        <img src="http://www.consultadd.com/wp-content/uploads/Final_logo.png">#}
+{#        <ul id="nav-mobile" class="right hide-on-med-and-down">#}
+{#            <li ><a style="color: black" href="/docx/">View Documents</a></li>#}
+{#            <li ><a style="color: black" href="/actant/">Add Consultant</a></li>#}
+{#            <li ><a style="color: black" href="/notes/">View Notes</a></li>#}
+{#            <li ><a style="color: black" href="/chats/">Chat Box</a></li>#}
+{#            <li ><a style="color: black" href="/articles/">Articles</a></li>#}
+{#            <li ><a style="color: black" href="/logout/">Logout</a></li>#}
+{#        </ul>#}
+{#    </div>#}
+{#</nav>#}
+{##}
+{#<div class="card-panel teal lighten-2">#}
+{#    <h1>{% block head %}{% endblock %}</h1>#}
+{#    {% block content %}#}
+{#        <p>Welcome {{ user.first_name }} !!!</p>#}
+{#    {% endblock %}#}
+{#</div>#}
+{##}
+{##}
+{#</body>#}
+{#</html>#}

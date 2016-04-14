@@ -103,13 +103,6 @@
         be located under, we need to actually serve the files for incoming requests. Generally there are two possible
         scenarios; a production or development environment.
 
-        When a user requests a static or media file in a production environment, we want our web server (nginx/apache
-        etc.) to deal with the request and return the file instead of passing the request down to the application server
-        (uwsgi/gunicorn etc.). To do this we need to configure our webserver to listen for requests that match our
-        STATIC_URL and MEDIA_URL and return the files immediately from the STATIC_ROOT and MEDIA_ROOT folders. How we go
-        about configuring this is outside the scope of this post, but there is an example for Nginx on Stackoverflow as
-        well as Apache.
-
         On the other hand, when working in a development environment, we don't want to go through the complications of
         having to set up and configure a fully fledged web server. Thankfully Django provide a very basic web server
         application that we can use to server our application during development. We can also server our static and
